@@ -35,4 +35,7 @@ while True:
         [150, 530],
         [320, 530]], 0)
 
+    #outputs the file to working directory
+    pygame.image.save( window, 'assigned_image_for_101224988.png' )
+
     pygame.display.update()
