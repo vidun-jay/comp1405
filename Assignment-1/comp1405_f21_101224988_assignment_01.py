@@ -11,8 +11,7 @@ window = pygame.display.set_mode((480, 640))
 window.fill((255,255,255))
 
 #while loop to prevent pygame from instantly closing
-run = True
-while run:
+while True:
     #program close definition
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -39,7 +38,7 @@ while run:
     #outputs the file to working directory
     pygame.image.save( window, 'assigned_image_for_101224988.png' )
 
-    #closes app after 5 seconds
+    #closes app after 1 second
     pygame.display.update()
     pygame.time.wait(1000)
     pygame.quit()
