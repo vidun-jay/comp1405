@@ -26,7 +26,7 @@ while True:
         [320,100]], 0)
 
     #draw green polygon
-    pygame.draw.polygon(window, (106,155,75), [
+    pygame.draw.polygon(window, (56,146,44), [
         [320, 430],
         [400, 430],
         [400, 530],
@@ -36,7 +36,7 @@ while True:
         [320, 530]], 0)
 
     #outputs the file to working directory
-    pygame.image.save( window, 'assigned_image_for_101224988.png' )
+    pygame.image.save( window, 'assigned_image_for_101224988.png')
 
     #closes app after 1 second
     pygame.display.update()
