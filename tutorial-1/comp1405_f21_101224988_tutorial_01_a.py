@@ -2,8 +2,8 @@
 import pygame
 import math
 
+#pi value for radians values
 pi = math.pi
-# three_pi = (3 * math.pi())/2
 
 #initialize pygame
 pygame.init()
@@ -30,8 +30,5 @@ while True:
     pygame.draw.arc(window, (227,166,151), [250,250,100,100], ((3*pi)/2), (pi/2)+0.009, 50)
     #black segment
     pygame.draw.arc(window, (30,30,30), [200,200,200,200], pi/2, ((3*pi)/2)+0.01, 100)
-
-    #outputs the file to working directory
-    pygame.image.save( window, 'assigned_image_for_101224988.png')
 
     pygame.display.update()
