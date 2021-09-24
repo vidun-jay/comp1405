@@ -19,7 +19,7 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
-
+            
     #blue segment
     pygame.draw.arc(window, (67,129,183), [150,150,300,300], (3*pi)/2, (pi/2)+0.01, 50)
     #white segment
