@@ -20,7 +20,7 @@ running_total = cmd_line_arg // 3
 print(running_total, "- divide by 3 and round result down")
 
 #add it to the integer that is one more than itself
-running_total = running_total + (cmd_line_arg + 1)
+running_total += running_total + 1
 print(running_total, "- add to integer one more than itself")
 
 #subtract 3
