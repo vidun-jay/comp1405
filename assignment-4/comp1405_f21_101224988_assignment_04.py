@@ -1,5 +1,71 @@
 #Vishva Vidun Jayakody, 101224988
 
+"""
+### UNIQUE MOVIE IDENTIFIERS ###
+
+"Demon Slayer - The Movie: Mugen Train"
+- Main character uses sword technique called "concentration breathing"
+
+"Your Name"
+- Plot includes a comet called "Comet Tiamat"
+
+"Boruto: Naruto the Movie"
+- About the son of a man with a nine-tailed fox demon inside him =
+
+"Sword Art Online The Movie: Ordinal Scale"
+- Characters play in a virtual reality world
+
+"My Neighbor Totoro"
+- Has a giant, dark gray animal with rabbit-like ears
+
+"Akira"
+- Akira is a post-apocalyptic cyberpunk action film
+
+"A Silent Voice"
+- Main female character is deaf
+
+"Spirited Away"
+- Main character wanders into a world ruled by gods, witches and spirits
+
+"Princess Mononoke"
+- Main character is accompanied by a large wolf
+
+"Grave of the Fireflies"
+- Needs no identifier, if answer to previous question is no, this is only possible anime movie left
+
+"Cinderella"
+- Fits into a glass slipper
+
+"Aladdin"
+- Rides a magic carpet
+
+"Beauty and the Beast"
+- Talking furniture and silverware
+
+"Snow White"
+- Has 7 dwarves
+
+"The Little Mermaid"
+- Main character desires legs
+
+"Peter Pan"
+- Antagonist has a hook for a hand
+
+"Mulan"
+- Main character has to convince everyone she's a man
+
+"Tangled"
+- Ridiculously long hair. Must take hours just to brush through.
+
+"Frozen"
+- Was turned into a massive marketing scheme. Everyone and everything was selling frozen merch and playing frozen
+songs everywhere.
+
+"Pinocchio"
+- Needs no identifier, if answer to previous question is no, this is only possible fairy tale movie left
+"""
+
+#ask user if they need instructions and print them if they do
 instr = input("\nDo you need instructions on how to play? (yes/no): ")
 if(instr.lower() == "yes"):
     print("""+------------------------------------------------------------+
@@ -29,16 +95,20 @@ if(instr.lower() == "yes"):
 | Then, simply answer the questions by typing "yes" or "no"! |
 +------------------------------------------------------------+""")
 
+    #pretty much only accept "yes" as an answer
     ready = ""
     while(ready != "yes"):
         ready = input("Are you ready to go? (yes/no) ")
 
-#anime
+### ANIME ###
+#ask user which subgenre to select
 subgenre = input('Which subgenre would you like to consult? (anime/fairy tale) ')
 
+#only allow either "anime" or "subgenre"
 while(subgenre != "anime" and subgenre != "fairy tale"):
     subgenre = input('Incorrect subgenre entered, please enter either "anime" or "fairy tale": ')
 
+#all the logic for the anime movies
 if(subgenre.lower() == "anime"):
     demon_slayer = input('Does the main character in your movie use a sword technique called "concentration breathing"? ')
     if(demon_slayer.lower() == "yes"):
@@ -78,7 +148,8 @@ if(subgenre.lower() == "anime"):
                                     elif(final1.lower() == "no"):
                                         print('Your movie is "Grave of the Fireflies"')
 
-#fairy tale
+### FAIRY TALE ###
+#all the logic for the fairy tale movies
 elif(subgenre.lower() == "fairy tale"):
     cinderella = input('Would the character the movie is named after fit in a glass slipper? ')
     if(cinderella.lower() == "yes"):
