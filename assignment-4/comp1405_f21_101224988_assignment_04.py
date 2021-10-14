@@ -34,8 +34,12 @@ if(instr.lower() == "yes"):
         ready = input("Are you ready to go? (yes/no) ")
 
 #anime
-anime = input('Is your movie an anime? ')
-if(anime.lower() == "yes"):
+subgenre = input('Which subgenre would you like to consult? (anime/fairy tale) ')
+
+while(subgenre != "anime" and subgenre != "fairy tale"):
+    subgenre = input('Incorrect subgenre entered, please enter either "anime" or "fairy tale": ')
+
+if(subgenre.lower() == "anime"):
     demon_slayer = input('Does the main character in your movie use a sword technique called "concentration breathing"? ')
     if(demon_slayer.lower() == "yes"):
         print('Your movie is "Demon Slayer - The Movie: Mugen Train"')
@@ -75,7 +79,7 @@ if(anime.lower() == "yes"):
                                         print('Your movie is "Grave of the Fireflies"')
 
 #fairy tale
-elif(anime.lower() == "no"):
+elif(subgenre.lower() == "fairy tale"):
     cinderella = input('Would the character the movie is named after fit in a glass slipper? ')
     if(cinderella.lower() == "yes"):
         print('Your movie is "Cinderella"')
@@ -112,4 +116,4 @@ elif(anime.lower() == "no"):
                                     if(final2.lower() == "yes"):
                                         print('Your movie is “Frozen”')
                                     elif(final2.lower() == "no"):
-                                        print('Your movie is "Your movie is “Pinocchio”')
+                                        print('Your movie is "Pinocchio”')
