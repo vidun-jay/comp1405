@@ -64,9 +64,11 @@ p2_pos = [40, 40]
 #randomly decide who goes first 
 first = random.randint(1, 2)
 if first == 1:
-    turn = True
-else:
     turn = False
+    print("Player 1 goes first!")
+else:
+    turn = True
+    print("Player 2 goes first!")
 
 #main loop
 while True:
