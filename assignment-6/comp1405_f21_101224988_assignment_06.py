@@ -1,7 +1,6 @@
 #Vishva Vidun Jayakody, 101224988
 import pygame
 import random
-import time
 
 #initialize pygame and load font
 pygame.init()
@@ -58,9 +57,14 @@ for event in pygame.event.get():
 p1_pos = [40, 40]
 p2_pos = [40, 40]
 
-#Let player 1 go first
-p1_turn = True
-p2_turn = False
+#Randomly decide who goes first
+first = random.randint(1, 2)
+if first == 1:
+    p1_turn = True
+    p2_turn = False
+else:
+    p1_turn = False
+    p2_turn = True
 
 #main loop
 while True:
@@ -68,22 +72,27 @@ while True:
     if(p1_turn == True): #if it's player 1s turn
         #roll the dice
         p1_roll = roll()
-        
+
         #output dice roll to command line
         print("Player 1 rolled a", p1_roll)
 
         #move p1_roll many squares forward
         for i in range (p1_roll):
 
+            #check if either player has already won and end game if they have
+            if p1_pos[0] >= 600 and p1_pos[1] >= 520:
+                pygame.time.delay(500)
+                print("\nPlayer 1 wins!")
+                exit()
+
+            elif p2_pos[0] >= 600 and p2_pos[1] >= 520:
+                pygame.time.delay(500)
+                print("Player 2 wins!")
+                exit()                 
+
             #as long as it's not at the last square, go ___ many squares to the right
             if p1_pos[0] <= 520:
-                p1_pos[0] += 80
-            
-            #winning case
-            elif p1_pos[0] >= 520 and p1_pos[1] >= 520:
-                pygame.time.delay(1000)
-                print("Player 1 wins!")
-                exit()                
+                p1_pos[0] += 80             
             
             #if at the last square, start from the first square of the next row
             else:
@@ -111,16 +120,22 @@ while True:
         print("Player 2 rolled a", p2_roll, "\n")
         
         #move p2_roll many squares forward
-        for i in range (p2_roll):      
+        for i in range (p2_roll):
+
+            #check if either player has already won and end game if they have
+            if p1_pos[0] >= 600 and p1_pos[1] >= 520:
+                pygame.time.delay(1000)
+                print("Player 1 wins!")
+                exit()
+
+            elif p2_pos[0] >= 600 and p2_pos[1] >= 520:
+                pygame.time.delay(1000)
+                print("Player 2 wins!")
+                exit()               
 
             #as long as it's not at the last square, go ___ many squares to the right
             if p2_pos[0] <= 520:
                 p2_pos[0] += 80
-
-            #winning case
-            elif p2_pos[0] >= 520 and p2_pos[1] >= 520:
-                print("Player 2 wins!")
-                exit()
             
             #if at the last square, start from the first square of the next row
             else:
