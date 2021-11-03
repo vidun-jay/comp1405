@@ -15,6 +15,11 @@ square_dim = 80
 #sets display dimensions to 8x7 'squares'
 window = pygame.display.set_mode((square_dim*8, square_dim*7))
 
+#pygame program close definition
+for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+        exit()
+
 #dice roll function, generates number between 1-6
 def roll():
     return random.randint(1, 6)
@@ -42,7 +47,6 @@ def checkerboard():
                 tile_num = font.render(str(num), True, (128, 128, 128))
                 window.blit(tile_num, (j+5, i+5))
 
-    
     #if you land on an occupied tile, make space for both
     if p1_pos == p2_pos:
         pygame.draw.circle(window, (255, 0, 0), (p1_pos[0], p1_pos[1]-20), 10)
@@ -51,11 +55,6 @@ def checkerboard():
         #draw the latest dot on top of the new checkerboard (clearing old dots)
         pygame.draw.circle(window, (255, 0, 0), p1_pos, 10)
         pygame.draw.circle(window, (0, 255, 0), p2_pos, 10)
-
-#pygame program close definition
-for event in pygame.event.get():
-    if event.type == pygame.QUIT:
-        exit()
 
 #player starting positions
 p1_pos = [40, 40]
