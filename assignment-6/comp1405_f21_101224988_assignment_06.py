@@ -1,24 +1,28 @@
-#Vishva Vidun Jayakody, 101224988
+#Vishva Vidun Jayakody
+#101224988
+#02/11/2021
+
 import pygame
 import random
 
-#initialize pygame and load font
+#initialize pygame and load font for numbers
 pygame.init()
 pygame.display.set_caption('Race to 56')
 font = pygame.font.Font('freesansbold.ttf', 15)
 
-#the length (and width I guess) of one square
+#define the length (and width) of one square
 square_dim = 80
 
-#sets display dimensions to 8 'squares'
+#sets display dimensions to 8x7 'squares'
 window = pygame.display.set_mode((square_dim*8, square_dim*7))
 
 #dice roll function, generates number between 1-6
 def roll():
     return random.randint(1, 6)
 
+#checkerboard function to draw board and update pieces
 def checkerboard():
-    #initiates tile counter    
+    #initiate tile counter    
     num = 0
 
     #sets background to white
@@ -38,6 +42,7 @@ def checkerboard():
                 num += 1
                 tile_num = font.render(str(num), True, (128, 128, 128))
                 window.blit(tile_num, (j+5, i+5))
+
     
     #if you land on an occupied tile, make space for both
     if p1_pos == p2_pos:
@@ -48,35 +53,33 @@ def checkerboard():
         pygame.draw.circle(window, (255, 0, 0), p1_pos, 10)
         pygame.draw.circle(window, (0, 255, 0), p2_pos, 10)
 
-#program close definition
+#pygame program close definition
 for event in pygame.event.get():
     if event.type == pygame.QUIT:
         exit()
 
-#Player starting positions
+#player starting positions
 p1_pos = [40, 40]
 p2_pos = [40, 40]
 
-#Randomly decide who goes first
+#randomly decide who goes first 
 first = random.randint(1, 2)
 if first == 1:
-    p1_turn = True
-    p2_turn = False
+    turn = True
 else:
-    p1_turn = False
-    p2_turn = True
+    turn = False
 
 #main loop
 while True:
     ### PLAYER 1 MOVEMENT ###
-    if(p1_turn == True): #if it's player 1s turn
+    if(turn == False): #if it's player 1s turn (player 1 = False, player 2 = True)
         #roll the dice
         p1_roll = roll()
 
         #output dice roll to command line
         print("Player 1 rolled a", p1_roll)
 
-        #move p1_roll many squares forward
+        #move "p1_roll" many squares forward
         for i in range (p1_roll):
 
             #check if either player has already won and end game if they have
@@ -84,7 +87,6 @@ while True:
                 pygame.time.delay(500)
                 print("\nPlayer 1 wins!")
                 exit()
-
             elif p2_pos[0] >= 600 and p2_pos[1] >= 520:
                 pygame.time.delay(500)
                 print("Player 2 wins!")
@@ -105,14 +107,13 @@ while True:
             pygame.time.delay(300)
 
     #next person's turn
-    p1_turn = False 
-    p2_turn = True
+    turn = True
 
     #wait a second before next person's turn
     pygame.time.delay(1000)
 
     ### PLAYER 2 MOVEMENT ###
-    if(p2_turn == True): #if it's player 2s turn
+    if(turn == True): #if it's player 2s turn
         #roll the dice
         p2_roll = roll()
         
@@ -127,7 +128,6 @@ while True:
                 pygame.time.delay(1000)
                 print("Player 1 wins!")
                 exit()
-
             elif p2_pos[0] >= 600 and p2_pos[1] >= 520:
                 pygame.time.delay(1000)
                 print("Player 2 wins!")
@@ -148,8 +148,7 @@ while True:
             pygame.time.delay(300)
 
     #next person's turn
-    p1_turn = True
-    p2_turn = False
+    turn = False
 
     #wait a second and a half before next person's turn
     pygame.time.delay(1000)
