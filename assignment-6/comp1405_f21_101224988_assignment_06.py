@@ -1,6 +1,4 @@
-#Vishva Vidun Jayakody
-#101224988
-#05/11/2021
+# Vishva Vidun Jayakody, 101224988
 import pygame
 import random
 
