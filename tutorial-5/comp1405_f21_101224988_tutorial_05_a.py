@@ -1,5 +1,6 @@
 #Vishva Vidun Jayanody, 101224988
 
+#function that checks if number is prime
 def isPrime(num):
     isPrime = False
     #1 is not prime, so start from 1+
@@ -15,6 +16,7 @@ def isPrime(num):
         isPrime = False
     return isPrime
 
+#main function
 def main():
     while True:
         user_num = int(input("\nEnter a number and find out if it's prime: "))
