@@ -1,4 +1,4 @@
-# Vishva Vidun Jayakody, 101224988
+#Vishva Vidun Jayakody, 101224988
 import pygame
 import random
 
@@ -10,7 +10,7 @@ font = pygame.font.Font('freesansbold.ttf', 15)
 #define the length (and width) of one square
 square_dim = 80
 
-#sets display dimensions to 8x7 'squares'
+#sets display dimensions to 8x7 80-pixel 'squares'
 window = pygame.display.set_mode((square_dim*8, square_dim*7))
 
 #pygame program close definition
