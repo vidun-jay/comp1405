@@ -18,9 +18,17 @@ def isPrime(num):
 
 #main function
 def main():
-    while True:
+    repeat = True
+    while repeat == True:
         user_num = int(input("\nEnter a number and find out if it's prime: "))
         print(isPrime(user_num))
+        
+        #give user option to quit
+        repeat_prompt = input("Would you like to ask again? (y/n)? ")
+        if repeat_prompt.lower() == "y":
+            pass
+        else:
+            repeat = False
 
 if __name__ == "__main__":
     main()
