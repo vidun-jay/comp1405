@@ -7,16 +7,16 @@ def rowGenerator(length):
 
 def main():
     tile_map = []
-    tile_map_txt = open("tiles.map", "w")
+    tile_map_txt = open("tiles.conf", "w")
 
     prefix = input("Tiles: ")
-    # prefix = "desert"
     
-    if prefix == "desert":
-        tile_map_txt.write("tiles: desert\n\n")
+    tile_map_txt.write("tiles: " + prefix + "\n\n")
 
-        for i in range (8):
-            tile_map_txt.write((str(rowGenerator(6)) + ",\n"))
+    for i in range (8):
+        tile_map_txt.write((str(rowGenerator(6)) + ",\n"))
+    print("Configuration file created!")
+    tile_map_txt.close()
 
 if __name__ == "__main__":
     main()

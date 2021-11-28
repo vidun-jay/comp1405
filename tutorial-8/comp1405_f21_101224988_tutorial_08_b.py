@@ -1,10 +1,8 @@
 #Vishva Vidun Jayakody, 101224988
 import pygame
+
 #initialize pygame
 pygame.init()
-#sets display dimensions
-window = pygame.display.set_mode((64*6, 64*8))
-pygame.display.set_caption('Tile Map')
 
 def clean(lines):
     new_list = []
@@ -24,25 +22,24 @@ def findIndex(element, matrix):
     
     return coordinates
 
-def drawTile(coordinates, file_num):
-
-    image = pygame.image.load('./images/desert_'+ str(file_num) + '.gif')
-    window.blit(image, coordinates)
-
-def coordinatesList(num, elements):
+def coordinatesList(window, tile_dimensions, prefix, num, elements):
 
     coordinates = findIndex(str(num), elements)
-    for item in coordinates:
-        if item[0]*64 == 0 and item[1]*64 == 0:
-            drawTile((item[0]*64, item[1]*64), num)
+    image = pygame.image.load('./images/' + prefix + '_' + str(num) + '.gif')
+    # print('./images/' + str(prefix) + '_' + str(num) + '.gif')
+    
+    for item in coordinates:    
+        # print('./images/' + prefix + '_' + str(num) + '.gif')
+        if item[0]*tile_dimensions == 0 and item[1]*tile_dimensions == 0:
+            window.blit(image, (item[0]*tile_dimensions, item[1]*tile_dimensions))
         else:
-            drawTile((item[1]*64, item[0]*64), num)
+            window.blit(image, (item[1]*tile_dimensions, item[0]*tile_dimensions))
 
-def main():   
+def main():
 
     valid = False
     while valid == False:
-        map_location = input("Enter the location of a .map file: ")
+        map_location = input("Enter the location of a tiles.conf file: ")
         try:
             map = open(map_location, "r")
             valid = True
@@ -51,6 +48,10 @@ def main():
             valid = False
 
     lines = clean(map.readlines())
+    
+    temp = [i[7:-1] for i in lines[0]]
+    prefix = temp[0]
+    
     elmnts = []
 
     for item in lines:
@@ -61,19 +62,26 @@ def main():
     for list in elmnts:
         print (list)
 
+    try:
+        dim = pygame.image.load('./images/' + prefix + '_0.gif').get_rect().size
+    except Exception:
+        print("Error: The tile name specified in 'tiles.conf' does not exist in the /images/ directory.")
+        exit()
+    #sets display dimensions
+    window = pygame.display.set_mode((dim[0]*6, dim[1]*8))
+    pygame.display.set_caption('Tile Map')
+
     while True:
-        #sets background to white
-        window.fill((255,255,255))
         #program close definition
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 exit()
 
-        coordinatesList(0, elmnts)
-        coordinatesList(1, elmnts)
-        coordinatesList(2, elmnts)
-        coordinatesList(3, elmnts)
-        coordinatesList(4, elmnts)
+        coordinatesList(window, dim[0], prefix, 0, elmnts)
+        coordinatesList(window, dim[0], prefix, 1, elmnts)
+        coordinatesList(window, dim[0], prefix, 2, elmnts)
+        coordinatesList(window, dim[0], prefix, 3, elmnts)
+        coordinatesList(window, dim[0], prefix, 4, elmnts)
 
         pygame.display.update()
 
