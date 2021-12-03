@@ -57,7 +57,7 @@ def main():
     matrix = []
 
     #counter controlled loop to increase size of random list generated
-    for i in range (5):
+    for i in range (1, 5):
         # generate random list
         list = [random.randint(1, 5) for i in range(i+1)]
         original = list.copy()
